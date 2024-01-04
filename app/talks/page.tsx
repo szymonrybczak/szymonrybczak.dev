@@ -71,7 +71,6 @@ export default function TalksPage() {
 }
 
 function Talk({
-  id,
   name,
   date,
   place,

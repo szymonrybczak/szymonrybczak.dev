@@ -1,11 +1,11 @@
 import { Suspense } from "react";
 import Badge from "@/components/badge";
 import Image from "next/image";
-import party from "./../public/images/party.png";
-import berlin from "./../public/images/berlin.png";
-import camera from "./../public/images/camera.png";
-import rneu from "./../public/images/rneu.png";
-import festival from "./../public/images/festival.png";
+import party from "./../public/images/party.jpg";
+import berlin from "./../public/images/berlin.jpg";
+import camera from "./../public/images/camera.jpg";
+import rneu from "./../public/images/rneu.jpg";
+import festival from "./../public/images/festival.jpg";
 import { ArrowUpRight } from "lucide-react";
 import Followers from "@/components/followers";
 
