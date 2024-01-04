@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Badge from "@/components/badge";
 import Image from "next/image";
 import party from "./../public/images/party.png";
@@ -5,6 +6,8 @@ import berlin from "./../public/images/berlin.png";
 import camera from "./../public/images/camera.png";
 import rneu from "./../public/images/rneu.png";
 import festival from "./../public/images/festival.png";
+import { ArrowUpRight } from "lucide-react";
+import Followers from "@/components/followers";
 
 export default function Page() {
   return (
@@ -14,22 +17,15 @@ export default function Page() {
         {`I'm a 17 years old React Native Developer at `}
         <span className="not-prose pt-1 pl-1">
           <Badge href="https://callstack.com/">
-            <svg
-              id="Layer_1"
-              data-name="Layer 1"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 868.93 172.9"
-              className="fill-[#7837F5] dark:fill-white"
-              height="13"
-            >
-              <path
-                className="cls-1"
-                d="M354.82,107.81a75.19,75.19,0,0,0,34.53,10.06c7.4,0,11.9-2,11.9-6.75,0-6.75-9.79-6.08-23-9.39-16.53-4.1-26.32-11-26.32-25.27,0-18.39,16.53-28.84,38.23-28.84a81.16,81.16,0,0,1,33.47,6.88V77.26A74.31,74.31,0,0,0,390.93,68c-7.14,0-11.37,2.11-11.37,6.08,0,6.09,9.39,6.09,22.35,9,16.67,4.1,26.86,10.45,26.86,25.53,0,19-16.94,29.5-39.29,29.5A83.74,83.74,0,0,1,355,130.83l-.13-23Zm148.1,25.8a41,41,0,0,1-19.71,4.76,30.44,30.44,0,0,1-22.75-8.73c-4.63-4.89-7.67-12.17-7.67-26.06v-32H438.63V49.34h14.16V15.48h27V49.34h23.15V71.7H479.77v29.23c0,8.47,2,14.82,10.19,14.82a31.51,31.51,0,0,0,13-3.57v21.43ZM705.58,15.48h27V86.12h.4l30.56-37h30.55l-33.46,39,36,48.16H764.72L732.84,91.81h-.4v44.31h-27Zm121.55,94.45c0-13.1,3-20.11,12.3-23.15v-.4c-9.26-3-12.3-10-12.3-23.15V32c0-9.39-3.31-12.7-11.24-12.7a38.61,38.61,0,0,0-6.75.67V1.06A77.38,77.38,0,0,1,821.44,0C842.48,0,852,11.91,852,28.84V64.29c0,9,2.51,12.57,11.77,12.57h5.16V96.3h-5.16c-9.26,0-11.77,3.58-11.77,12.57v35.59c0,16.93-9.79,28.84-30.56,28.84a77.38,77.38,0,0,1-12.3-1.06V153.32a29.34,29.34,0,0,0,6.75.79c7.8,0,11.24-3.3,11.24-12.7V109.93Zm-227.21,6.22c-3.7,0-5.29-2.78-5.29-6.88V79.77a28.7,28.7,0,0,0-9.79-24.08,46.6,46.6,0,0,0-29.1-8.33,69.6,69.6,0,0,0-30.56,6.75V77.26a54.15,54.15,0,0,1,25.53-6.88,20.53,20.53,0,0,1,13.49,3.7,12.55,12.55,0,0,1,3.31,9.26v3.44a72,72,0,0,0-15.08-1.59A44.1,44.1,0,0,0,528,91.28a24.43,24.43,0,0,0-10.72,21,24,24,0,0,0,10.32,20.37,36.33,36.33,0,0,0,20.24,5.69,42.53,42.53,0,0,0,24.47-7.27l.27-.14a25.61,25.61,0,0,0,18.91,6.88,29.29,29.29,0,0,0,13-2.64V115.09A10.72,10.72,0,0,1,599.92,116.15Zm-32.28-1.06a25,25,0,0,1-12.3,3.57c-6.35,0-11.25-3-11.25-8.73,0-6.75,7-8.86,13.89-8.86a39.08,39.08,0,0,1,9.66,1.19Zm120.9,16.54a60,60,0,0,1-28.71,6.74c-28.05,0-49-19.18-49-45.37,0-27.39,22.76-45.64,50.14-45.64A58.89,58.89,0,0,1,687,53.44v25a46.44,46.44,0,0,0-24.47-8.07,22.65,22.65,0,0,0-20.64,11.24,22.71,22.71,0,0,0,21,34.26,44.1,44.1,0,0,0,25.67-8.73v24.48ZM307.86,16.93h27V136.39h-27Zm-161,114.7a61.49,61.49,0,0,1-28.57,6.74c-28,0-48.95-19.18-48.95-45.37,0-27.39,22.76-45.64,50.14-45.64a58.92,58.92,0,0,1,25.93,6.08v25a46.47,46.47,0,0,0-24.48-8.07A22.86,22.86,0,0,0,100.39,105a22.88,22.88,0,0,0,20.9,10.84,43.38,43.38,0,0,0,25.53-8.73v24.48Zm96-15.48c-3.7,0-5.29-2.78-5.29-6.88V79.77a28.7,28.7,0,0,0-9.79-24.08,46.56,46.56,0,0,0-29.1-8.33,69.63,69.63,0,0,0-30.56,6.75V77.26a54.18,54.18,0,0,1,25.53-6.88,20.51,20.51,0,0,1,13.49,3.7,12.5,12.5,0,0,1,3.31,9.26v3.44a71.91,71.91,0,0,0-15.08-1.59,43,43,0,0,0-24.47,6.09,24.45,24.45,0,0,0-10.72,21,24.06,24.06,0,0,0,10.32,20.37,36.33,36.33,0,0,0,20.24,5.69,42.53,42.53,0,0,0,24.47-7.27l.27-.14a25.62,25.62,0,0,0,18.92,6.88,29.27,29.27,0,0,0,13-2.64V115.09A10.72,10.72,0,0,1,242.86,116.15Zm-32.41-1.06a25,25,0,0,1-12.3,3.57c-6.35,0-11.24-3-11.24-8.73,0-6.75,7-8.86,13.89-8.86a39.06,39.06,0,0,1,9.65,1.19Zm50.93-98.16h27V136.39h-27ZM16.93,108.87c0-9-2.51-12.57-11.77-12.57H0V76.86H5.16c9.26,0,11.77-3.57,11.77-12.57V28.84C16.93,11.77,26.72,0,47.49,0a77.38,77.38,0,0,1,12.3,1.06V20a29.27,29.27,0,0,0-6.74-.8c-7.81,0-11.25,3.31-11.25,12.7V63.1c0,13.1-3,20.11-12.3,23.15v.4c9.26,3,12.3,10,12.3,23.15V141c0,9.39,3.44,12.7,11.25,12.7a29.27,29.27,0,0,0,6.74-.8v18.92a77.38,77.38,0,0,1-12.3,1.06c-21,0-30.56-11.91-30.56-28.84V108.87Z"
-              />
-            </svg>
+            <Image
+              alt={"Callstack logo"}
+              src={"/callstack.svg"}
+              width={60}
+              height={14}
+            />
           </Badge>
         </span>
-        {`. I'm based in Cracow, PL, currently maintaining `}
+        {`. I'm based in Cracow, PL. Currently maintaining `}
         <Badge href="https://github.com/react-native-community/cli">
           <span className="font-medium text-s px-1">
             react-native-community/cli
@@ -91,6 +87,75 @@ export default function Page() {
             priority
             className="rounded-lg object-cover object-right"
           />
+        </div>
+      </div>
+      <p className="prose prose-neutral dark:prose-invert">
+        On a daily basis I{"'"}m working in a Technology team, where I support
+        R&D and Open Source initiatives. I{"'"}m writing a lot of technical
+        content mainly about React Native and new things that are coming to the
+        framework! I am also attending ZSEL 1 High School in Cracow (sometimes
+        😅). You can follow my work on Social Media listed below ✨
+      </p>
+      <div className="flex pt-6">
+        <div className="group">
+          <a
+            href={"https://twitter.com/SzymonRybczak"}
+            target="_blank"
+            className="border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded flex items-center justify-between px-3 py-4"
+          >
+            <div className="flex items-center space-x-3">
+              <div className="relative h-16">
+                <Image
+                  alt={"Twitter avatar"}
+                  src={"/images/avatar.jpg"}
+                  height={64}
+                  width={64}
+                  sizes="33vw"
+                  className="border border-neutral-200 dark:border-neutral-700 rounded-full h-16 w-16"
+                  priority
+                />
+
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 30 30"
+                  width="240px"
+                  height="240px"
+                  className="bg-white dark:bg-black dark:fill-white  border border-neutral-200 rounded-full p-1 dark:border-neutral-700 relative h-6 w-6 -top-6 -right-10"
+                >
+                  <path d="M26.37,26l-8.795-12.822l0.015,0.012L25.52,4h-2.65l-6.46,7.48L11.28,4H4.33l8.211,11.971L12.54,15.97L3.88,26h2.65 l7.182-8.322L19.42,26H26.37z M10.23,6l12.34,18h-2.1L8.12,6H10.23z" />
+                </svg>
+              </div>
+              <div className="flex flex-col">
+                <p className="font-medium text-neutral-900 dark:text-neutral-100">
+                  @SzymonRybczak
+                </p>
+                <Suspense fallback={<p className="h-6" />}>
+                  <Followers />
+                </Suspense>
+              </div>
+            </div>
+            <div className="text-neutral-700 dark:text-neutral-300 transform transition-transform duration-300 group-hover:-rotate-12">
+              <ArrowUpRight />
+            </div>
+          </a>
+        </div>
+
+        <div className="pl-4">
+          <a
+            href={"https://github.com/SzymonRybczak"}
+            target="_blank"
+            className="border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded flex items-center justify-between p-4"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 30 30"
+              width={64}
+              height={64}
+              className="fill-black dark:fill-white"
+            >
+              <path d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>
