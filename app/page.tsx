@@ -134,7 +134,7 @@ export default function Page() {
                 </Suspense>
               </div>
             </div>
-            <div className="text-neutral-700 dark:text-neutral-300 transform transition-transform duration-300 group-hover:-rotate-12">
+            <div className="text-neutral-700 dark:text-neutral-300 transform transition-transform duration-300 group-hover:-rotate-12 pl-8">
               <ArrowUpRight />
             </div>
           </a>
