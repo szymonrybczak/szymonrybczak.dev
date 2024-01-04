@@ -22,7 +22,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system">
           <main
             className={cn(
-              "flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0 max-w-2xl mb-40 mx-4 mt-8 lg:mx-auto",
+              "flex-auto min-w-0 flex flex-col px-2 md:px-0 max-w-2xl mb-40 mx-4 mt-8 lg:mx-auto",
               GeistSans.variable,
               GeistMono.variable
             )}
