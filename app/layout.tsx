@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Navbar } from "./components/nav";
+import { Navbar } from "@/components/nav";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 
