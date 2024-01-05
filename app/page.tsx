@@ -12,10 +12,10 @@ import Followers from "@/components/followers";
 export default function Page() {
   return (
     <section>
-      <h1 className="font-medium text-xl mb-8">hey, I{"'"}m Szymon 👋</h1>
+      <h1 className="mb-8 text-xl font-medium">hey, I{"'"}m Szymon 👋</h1>
       <p className="prose prose-neutral dark:prose-invert">
         {`I'm a 17 years old React Native Developer at `}
-        <span className="not-prose pt-1 pl-1">
+        <span className="not-prose pl-1 pt-1">
           <Badge href="https://callstack.com/">
             <Image
               alt={"Callstack logo"}
@@ -27,7 +27,7 @@ export default function Page() {
         </span>
         {`. I'm based in Cracow, PL. Currently maintaining `}
         <Badge href="https://github.com/react-native-community/cli">
-          <span className="font-medium text-s px-1">
+          <span className="text-s px-1 font-medium">
             react-native-community/cli
           </span>
         </Badge>
@@ -35,7 +35,7 @@ export default function Page() {
           and focusing on bringing web concepts to native world.
         </span>
       </p>
-      <div className="grid grid-cols-3 gap-4 my-8">
+      <div className="my-8 grid grid-cols-3 gap-4">
         <div className="relative h-40">
           <Image
             alt="Me at the 2022 EOY party"
@@ -57,7 +57,7 @@ export default function Page() {
           />
         </div>
 
-        <div className="relative h-80 row-span-2">
+        <div className="relative row-span-2 h-80">
           <Image
             alt="Me at the 2022 EOY party"
             src={rneu}
@@ -68,7 +68,7 @@ export default function Page() {
           />
         </div>
 
-        <div className="relative h-80 col-span-2 row-span-2">
+        <div className="relative col-span-2 row-span-2 h-80">
           <Image
             alt="Me at the 2022 EOY party"
             src={berlin}
@@ -96,12 +96,12 @@ export default function Page() {
         framework! I am also attending ZSEL 1 High School in Cracow (sometimes
         😅). You can follow my work on Social Media listed below ✨
       </p>
-      <div className="flex pt-6 gap-4">
+      <div className="flex gap-4 pt-6">
         <div className="group">
           <a
             href={"https://twitter.com/SzymonRybczak"}
             target="_blank"
-            className="border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded flex items-center justify-between px-3 py-4"
+            className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 px-3 py-4 dark:border-neutral-700 dark:bg-neutral-800"
           >
             <div className="flex items-center space-x-3">
               <div className="relative h-16">
@@ -110,7 +110,7 @@ export default function Page() {
                   src={"/images/avatar.jpg"}
                   height={64}
                   width={64}
-                  className="border border-neutral-200 dark:border-neutral-700 rounded-full min-h-[64px] min-w-[64px]"
+                  className="min-h-[64px] min-w-[64px] rounded-full border border-neutral-200 dark:border-neutral-700"
                 />
 
                 <svg
@@ -118,7 +118,7 @@ export default function Page() {
                   viewBox="0 0 30 30"
                   width="240px"
                   height="240px"
-                  className="bg-white dark:bg-black dark:fill-white  border border-neutral-200 rounded-full p-1 dark:border-neutral-700 relative h-6 w-6 -top-6 -right-10"
+                  className="relative -right-10 -top-6  h-6 w-6 rounded-full border border-neutral-200 bg-white p-1 dark:border-neutral-700 dark:bg-black dark:fill-white"
                 >
                   <path d="M26.37,26l-8.795-12.822l0.015,0.012L25.52,4h-2.65l-6.46,7.48L11.28,4H4.33l8.211,11.971L12.54,15.97L3.88,26h2.65 l7.182-8.322L19.42,26H26.37z M10.23,6l12.34,18h-2.1L8.12,6H10.23z" />
                 </svg>
@@ -132,7 +132,7 @@ export default function Page() {
                 </Suspense>
               </div>
             </div>
-            <div className="text-neutral-700 dark:text-neutral-300 transform transition-transform duration-300 group-hover:-rotate-12 pl-8 hidden sm:block">
+            <div className="hidden transform pl-8 text-neutral-700 transition-transform duration-300 group-hover:-rotate-12 sm:block dark:text-neutral-300">
               <ArrowUpRight />
             </div>
           </a>
@@ -142,7 +142,7 @@ export default function Page() {
           <a
             href={"https://github.com/SzymonRybczak"}
             target="_blank"
-            className="border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 rounded flex items-center justify-between p-4"
+            className="flex items-center justify-between rounded border border-neutral-200 bg-neutral-50 p-4 dark:border-neutral-700 dark:bg-neutral-800"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

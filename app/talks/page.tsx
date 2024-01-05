@@ -43,7 +43,7 @@ const data: Entry[] = [
 export default function TalksPage() {
   return (
     <section>
-      <h1 className="font-medium text-2xl mb-8 tracking-tighter">
+      <h1 className="mb-8 text-2xl font-medium tracking-tighter">
         live demos, interviews, and talks.
       </h1>
 
@@ -80,23 +80,23 @@ function Talk({
   return (
     <div className="relative flex flex-row">
       {showYear && (
-        <div className="position absolute -left-14 text-neutral-500 hidden sm:block">
+        <div className="position absolute -left-14 hidden text-neutral-500 sm:block">
           {new Date(date).getFullYear()}
         </div>
       )}
 
       <Link href={link} target={"_blank"}>
-        <div className="mb-5 group">
+        <div className="group mb-5">
           <div className="flex flex-row">
             <p>{name}</p>
-            <div className="text-neutral-700 dark:text-neutral-300 transform transition-transform duration-300 group-hover:-rotate-12 align-center">
+            <div className="align-center transform text-neutral-700 transition-transform duration-300 group-hover:-rotate-12 dark:text-neutral-300">
               <ArrowUpRight className="pt-1" size={18} />
             </div>
           </div>
-          <p className="text-xs sm:text-base text-neutral-500 flex flex-row space-x-1">
+          <p className="flex flex-row space-x-1 text-xs text-neutral-500 sm:text-base">
             <span className=" whitespace-nowrap">{formatDate(date)}</span>
             <span>|</span>
-            <span className="underline underline-offset-4 text-es">
+            <span className="text-es underline underline-offset-4">
               {place}
             </span>
           </p>

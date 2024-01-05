@@ -22,9 +22,9 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system">
           <main
             className={cn(
-              "flex-auto min-w-0 flex flex-col px-2 md:px-0 max-w-2xl mb-40 mx-4 mt-8 lg:mx-auto",
+              "mx-4 mb-40 mt-8 flex min-w-0 max-w-2xl flex-auto flex-col px-2 md:px-0 lg:mx-auto",
               GeistSans.variable,
-              GeistMono.variable
+              GeistMono.variable,
             )}
           >
             <Navbar />

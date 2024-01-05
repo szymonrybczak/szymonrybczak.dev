@@ -12,13 +12,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         className={
-          "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 w-10 h-10 outline-none"
+          "inline-flex h-10 w-10 items-center justify-center whitespace-nowrap rounded-md text-sm font-medium outline-none transition-colors disabled:pointer-events-none disabled:opacity-50"
         }
         ref={ref}
         {...props}
       />
     );
-  }
+  },
 );
 Button.displayName = "Button";
 
