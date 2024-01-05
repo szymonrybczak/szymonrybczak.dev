@@ -5,6 +5,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "Szymon Rybczak",
@@ -29,6 +30,7 @@ export default function RootLayout({
           >
             <Navbar />
             {children}
+            <SpeedInsights />
           </main>
         </ThemeProvider>
       </body>
