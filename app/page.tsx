@@ -20,14 +20,14 @@ export default function Page() {
             <Image
               alt={"Callstack logo"}
               src={"/callstack.svg"}
-              width={60}
+              width={65}
               height={14}
             />
           </Badge>
         </span>
         {`. I'm based in Cracow, PL. Currently maintaining `}
         <Badge href="https://github.com/react-native-community/cli">
-          <span className="text-s px-1 font-medium">
+          <span className="text-s px-1 font-semibold">
             react-native-community/cli
           </span>
         </Badge>
