@@ -80,7 +80,7 @@ function Talk({
   return (
     <div className="relative flex flex-row">
       {showYear && (
-        <div className="position absolute -left-14 text-neutral-500">
+        <div className="position absolute -left-14 text-neutral-500 hidden sm:block">
           {new Date(date).getFullYear()}
         </div>
       )}
@@ -89,14 +89,16 @@ function Talk({
         <div className="mb-5 group">
           <div className="flex flex-row">
             <p>{name}</p>
-            <div className=" text-neutral-700 dark:text-neutral-300 transform transition-transform duration-300 group-hover:-rotate-12 align-center">
+            <div className="text-neutral-700 dark:text-neutral-300 transform transition-transform duration-300 group-hover:-rotate-12 align-center">
               <ArrowUpRight className="pt-1" size={18} />
             </div>
           </div>
-          <p className="text-neutral-500 flex flex-row space-x-1">
-            <span>{formatDate(date)}</span>
+          <p className="text-xs sm:text-base text-neutral-500 flex flex-row space-x-1">
+            <span className=" whitespace-nowrap">{formatDate(date)}</span>
             <span>|</span>
-            <span className="underline underline-offset-4">{place}</span>
+            <span className="underline underline-offset-4 text-es">
+              {place}
+            </span>
           </p>
         </div>
       </Link>

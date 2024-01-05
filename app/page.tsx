@@ -96,7 +96,7 @@ export default function Page() {
         framework! I am also attending ZSEL 1 High School in Cracow (sometimes
         😅). You can follow my work on Social Media listed below ✨
       </p>
-      <div className="flex pt-6">
+      <div className="flex pt-6 gap-4">
         <div className="group">
           <a
             href={"https://twitter.com/SzymonRybczak"}
@@ -110,9 +110,7 @@ export default function Page() {
                   src={"/images/avatar.jpg"}
                   height={64}
                   width={64}
-                  sizes="33vw"
-                  className="border border-neutral-200 dark:border-neutral-700 rounded-full h-16 w-16"
-                  priority
+                  className="border border-neutral-200 dark:border-neutral-700 rounded-full min-h-[64px] min-w-[64px]"
                 />
 
                 <svg
@@ -134,13 +132,13 @@ export default function Page() {
                 </Suspense>
               </div>
             </div>
-            <div className="text-neutral-700 dark:text-neutral-300 transform transition-transform duration-300 group-hover:-rotate-12 pl-8">
+            <div className="text-neutral-700 dark:text-neutral-300 transform transition-transform duration-300 group-hover:-rotate-12 pl-8 hidden sm:block">
               <ArrowUpRight />
             </div>
           </a>
         </div>
 
-        <div className="pl-4">
+        <div>
           <a
             href={"https://github.com/SzymonRybczak"}
             target="_blank"
