@@ -38,7 +38,10 @@ export default function WorkPage() {
           developing high-performing cross-platform apps using the React & React
           Native tech stack. I{"'"}m mainly involved in R&D and Open Source
           initiatives on behalf that I{"'"}m maintaining{" "}
-          <Link href={"https://github.com/react-native-commmunity/cli"}>
+          <Link
+            href={"https://github.com/react-native-community/cli"}
+            target={"_blank"}
+          >
             React Native Community CLI
           </Link>
           , and I{"'"}m working on a technical content, such as: newsletters,
