@@ -12,7 +12,7 @@ export default function Page() {
     <section>
       <h1 className="mb-8 text-xl font-medium">hey, I{"'"}m Szymon 👋</h1>
       <p className="prose prose-neutral dark:prose-invert">
-        {`I'm a 17 years old React Native Developer at `}
+        {`I'm a 17 yo React Native Developer at `}
         <span className="not-prose pl-1 pt-1">
           <Badge href="https://callstack.com/">
             <Image
@@ -31,7 +31,7 @@ export default function Page() {
           and focusing on bringing web concepts to native world.
         </span>
       </p>
-      <div className="my-8 columns-2 gap-4 sm:columns-3">
+      <div className="my-8 columns-2 gap-3 sm:columns-3">
         <div className="relative mb-4 h-40">
           <Image
             alt="Me at the 2022 EOY party"
@@ -49,7 +49,7 @@ export default function Page() {
             fill
             sizes="(max-width: 768px) 213px, 33vw"
             priority
-            className="rounded-lg object-cover object-[-16px] sm:object-center"
+            className="rounded-lg object-cover "
           />
         </div>
         <div className="relative h-40 sm:mb-4 sm:h-80">

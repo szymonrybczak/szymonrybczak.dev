@@ -24,13 +24,13 @@ export default function WorkPage() {
         <Link
           href={"https://callstack.com"}
           target={"_blank"}
-          className="no-underline"
+          className="not-prose no-underline"
         >
           <h2 className="mb-1 text-xl font-medium tracking-tighter">
             Callstack
           </h2>
         </Link>
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+        <p className="not-prose text-sm text-neutral-600 dark:text-neutral-400">
           React Native Developer
         </p>
         <p>
@@ -50,11 +50,11 @@ export default function WorkPage() {
         <Link
           href={"https://mymusic.pl"}
           target={"_blank"}
-          className="no-underline"
+          className="not-prose no-underline"
         >
           <h2 className="mb-1 text-xl font-medium tracking-tighter">MyMusic</h2>
         </Link>
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+        <p className="not-prose text-sm text-neutral-600 dark:text-neutral-400">
           React Native Developer, Sep 2021 - Nov 2022
         </p>
         <p>
@@ -62,11 +62,7 @@ export default function WorkPage() {
           publishing and distributing work by top Polish artists. Founded over
           20 years, it is dedicated to advancing and promoting music in Poland.
           I was mainly working on development{" "}
-          <Link
-            href="https://mugo.pl"
-            target={"_blank"}
-            className="underline underline-offset-2"
-          >
+          <Link href="https://mugo.pl" target={"_blank"}>
             MUGO
           </Link>{" "}
           which is a platform that allows artists to publish songs to all
@@ -79,12 +75,12 @@ export default function WorkPage() {
             target={"_blank"}
             className="no-underline"
           >
-            <h2 className="mb-1 text-xl font-medium tracking-tighter">
+            <h2 className="not-prose mb-1 text-xl font-medium tracking-tighter">
               LiveKid
             </h2>
           </Link>
         </div>
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+        <p className="not-prose text-sm text-neutral-600 dark:text-neutral-400">
           iOS Developer, March 2021 - Sep 2021
         </p>
         <p>
