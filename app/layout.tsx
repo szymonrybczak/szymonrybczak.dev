@@ -8,7 +8,10 @@ import { cn } from "@/lib/utils";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
-  title: "Szymon Rybczak",
+  title: {
+    default: "Szymon Rybczak",
+    template: "%s | Szymon Rybczak",
+  },
   description: "17 yo React Native Developer",
 };
 
