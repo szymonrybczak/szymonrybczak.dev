@@ -1,10 +1,11 @@
 import Badge from "@/components/badge";
 import Image from "next/image";
-import party from "./../public/images/party.jpg";
+import party from "./../public/images/party.png";
 import berlin from "./../public/images/berlin.jpg";
-import camera from "./../public/images/camera.jpg";
-import rneu from "./../public/images/rneu.jpg";
-import festival from "./../public/images/festival.jpg";
+import camera from "./../public/images/camera.png";
+import rneu from "./../public/images/rneu.png";
+import callstackHoodie from "./../public/images/callstack_hoodie.jpg";
+import festival from "./../public/images/festival.png";
 
 export default function Page() {
   return (
@@ -32,20 +33,40 @@ export default function Page() {
           and focusing on bringing web concepts to native world.
         </span>
       </p>
-      <div className="my-8 grid grid-cols-3 gap-4">
-        <div className="relative h-40">
+      <div className="my-8 columns-2 gap-4 sm:columns-3">
+        <div className="relative mb-4 h-40">
           <Image
             alt="Me at the 2022 EOY party"
             src={party}
             fill
             sizes="(max-width: 768px) 213px, 33vw"
             priority
-            className="rounded-lg object-cover object-[20%]"
+            className="rounded-lg object-cover"
           />
         </div>
-        <div className="relative h-40">
+        <div className="relative mb-4 h-80 sm:mb-0">
           <Image
-            alt="Me at the 2022 EOY party"
+            alt="Photo of me wearing Callstack's hoodie"
+            src={callstackHoodie}
+            fill
+            sizes="(max-width: 768px) 213px, 33vw"
+            priority
+            className="rounded-lg object-cover object-[-16px] sm:object-center"
+          />
+        </div>
+        <div className="relative h-40 sm:mb-4 sm:h-80">
+          <Image
+            alt="Me answering questions after my talk at React Day Berlin"
+            src={berlin}
+            fill
+            sizes="(max-width: 768px) 213px, 33vw"
+            priority
+            className="rounded-lg object-cover object-top sm:object-center"
+          />
+        </div>
+        <div className="relative mb-4 h-40 sm:mb-0">
+          <Image
+            alt="Photo of camera recording myself delivering a talk on stage"
             src={camera}
             fill
             sizes="(max-width: 768px) 213px, 33vw"
@@ -53,36 +74,24 @@ export default function Page() {
             className="rounded-lg object-cover"
           />
         </div>
-
-        <div className="relative row-span-2 h-80">
+        <div className="relative mb-4 h-40">
           <Image
-            alt="Me at the 2022 EOY party"
-            src={rneu}
-            fill
-            sizes="(max-width: 768px) 213px, 33vw"
-            priority
-            className="rounded-lg object-cover object-left"
-          />
-        </div>
-
-        <div className="relative col-span-2 row-span-2 h-80">
-          <Image
-            alt="Me at the 2022 EOY party"
-            src={berlin}
+            alt="Me, Oskar & Kuba at a company party"
+            src={festival}
             fill
             sizes="(max-width: 768px) 213px, 33vw"
             priority
             className="rounded-lg object-cover"
           />
         </div>
-        <div className="relative h-40">
+        <div className="relative h-80">
           <Image
-            alt="Me at the 2022 EOY party"
-            src={festival}
+            alt="Me at React Native EU 2023"
+            src={rneu}
             fill
-            sizes="(max-width: 768px) 213px, 33vw"
+            sizes="(min-width: 768px) 213px, 33vw"
             priority
-            className="rounded-lg object-cover object-right"
+            className="rounded-lg object-cover"
           />
         </div>
       </div>
