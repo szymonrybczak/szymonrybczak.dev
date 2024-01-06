@@ -1,7 +1,7 @@
 import Badge from "@/components/badge";
 import Image from "next/image";
 import party from "./../public/images/party.png";
-import berlin from "./../public/images/berlin.jpg";
+import berlin from "./../public/images/berlin.png";
 import camera from "./../public/images/camera.png";
 import rneu from "./../public/images/rneu.png";
 import callstackHoodie from "./../public/images/callstack_hoodie.jpg";
@@ -81,7 +81,7 @@ export default function Page() {
             fill
             sizes="(max-width: 768px) 213px, 33vw"
             priority
-            className="rounded-lg object-cover"
+            className="rounded-lg object-cover object-[60%]"
           />
         </div>
         <div className="relative h-80">
@@ -91,7 +91,7 @@ export default function Page() {
             fill
             sizes="(min-width: 768px) 213px, 33vw"
             priority
-            className="rounded-lg object-cover"
+            className="rounded-lg object-cover object-[20%]"
           />
         </div>
       </div>
