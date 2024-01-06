@@ -25,9 +25,7 @@ export default function Page() {
         </span>
         {`. I'm based in Cracow, PL. Currently maintaining `}
         <Badge href="https://github.com/react-native-community/cli">
-          <span className="text-s px-1 font-semibold">
-            react-native-community/cli
-          </span>
+          <span className="text-s px-1">react-native-community/cli</span>
         </Badge>
         <span className="pl-1">
           and focusing on bringing web concepts to native world.
@@ -99,8 +97,7 @@ export default function Page() {
         On a daily basis I{"'"}m working in a Technology team, where I support
         R&D and Open Source initiatives. I{"'"}m writing a lot of technical
         content mainly about React Native and new things that are coming to the
-        framework! I am also attending ZSEL 1 High School in Cracow (sometimes
-        😅).
+        framework! I am also attending ZSEL 1 High School in Cracow.
       </p>
     </section>
   );

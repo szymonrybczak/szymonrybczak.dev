@@ -80,7 +80,7 @@ function Talk({
   return (
     <div className="relative flex flex-row">
       {showYear && (
-        <div className="position absolute -left-14 hidden text-neutral-500 sm:block">
+        <div className="position absolute -left-14 hidden text-neutral-500 lg:block">
           {new Date(date).getFullYear()}
         </div>
       )}
