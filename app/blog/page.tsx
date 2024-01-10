@@ -3,6 +3,12 @@ import { getBlogPosts } from "../db/blog";
 import { Suspense } from "react";
 import { getViewsCount } from "../db/queries";
 import ViewsCounter from "@/components/ViewsCounter";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description: "Posts about React & React Native ecosystem.",
+};
 
 export default function Blog() {
   let allBlogs = getBlogPosts();
