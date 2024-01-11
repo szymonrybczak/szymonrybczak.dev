@@ -94,7 +94,7 @@ function Talk({
             </div>
           </div>
           <p className="flex flex-row space-x-1 text-xs text-neutral-500 sm:text-base">
-            <span className=" whitespace-nowrap">{formatDate(date)}</span>
+            <span className="whitespace-nowrap">{formatDate(date, false)}</span>
             <span>|</span>
             <span className="text-es underline underline-offset-4">
               {place}

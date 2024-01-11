@@ -5,8 +5,9 @@ import formatDate from "@/utils/formatDate";
 import { getViewsCount } from "../../db/queries";
 import ViewsCounter from "@/components/ViewsCounter";
 import { increment } from "../../db/actions";
+import Link from "next/link";
 
-export default async function Blog({ params }: { params: { slug: string } }) {
+export default function Blog({ params }: { params: { slug: string } }) {
   let post = getBlogPosts().find(({ slug }) => slug === params.slug);
 
   if (!post) {
@@ -26,6 +27,10 @@ export default async function Blog({ params }: { params: { slug: string } }) {
       </h1>
       <div className="mb-8 mt-2 flex max-w-[650px] items-center justify-between text-sm">
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
+          <Link href={"https://twitter.com/SzymonRybczak"} target="_blank">
+            @szymonrybczak
+          </Link>
+          {" | "}
           {formatDate(publishedAt)}
         </p>
         <Suspense fallback={<p className="h-5" />}>

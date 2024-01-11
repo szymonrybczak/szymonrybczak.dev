@@ -20,6 +20,7 @@ export default function Page() {
               src={"/callstack.svg"}
               width={65}
               height={14}
+              priority
             />
           </Badge>
         </span>
