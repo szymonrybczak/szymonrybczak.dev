@@ -75,12 +75,14 @@ export default function Blog({ params }: { params: { slug: string } }) {
         {title}
       </h1>
       <div className="mb-8 mt-2 flex max-w-[650px] items-center justify-between text-sm">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          <Link href={"https://twitter.com/SzymonRybczak"} target="_blank">
-            @szymonrybczak
-          </Link>
-          {" | "}
-          {formatDate(publishedAt)}
+        <p className="display flex text-sm text-neutral-600 dark:text-neutral-400">
+          <span className="hidden sm:block">
+            <Link href={"https://twitter.com/SzymonRybczak"} target="_blank">
+              @szymonrybczak
+            </Link>
+            {" | "}
+          </span>
+          <span className="pl-1">{formatDate(publishedAt)}</span>
         </p>
         <Suspense fallback={<p className="h-5" />}>
           <Views slug={slug} />
