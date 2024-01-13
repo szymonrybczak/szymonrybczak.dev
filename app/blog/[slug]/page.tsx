@@ -6,6 +6,56 @@ import { getViewsCount } from "../../db/queries";
 import ViewsCounter from "@/components/ViewsCounter";
 import { increment } from "../../db/actions";
 import Link from "next/link";
+import { Metadata } from "next";
+
+type Props = {
+  params: { slug: string };
+};
+
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata | undefined> {
+  let post = getBlogPosts().find((post) => post.slug === params.slug);
+  if (!post) {
+    return;
+  }
+
+  let {
+    title,
+    publishedAt: publishedTime,
+    summary: description,
+    image,
+  } = post.metadata;
+  let ogImage = image
+    ? `https://szymonrybczak.dev/${image}`
+    : `https://szymonrybczak.dev/og?title=${title}&date=${formatDate(
+        publishedTime,
+        false,
+      )}`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      publishedTime,
+      url: `https://szymonrybcza.dev/blog/${post.slug}`,
+      images: [
+        {
+          url: ogImage,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+    },
+  };
+}
 
 export default function Blog({ params }: { params: { slug: string } }) {
   let post = getBlogPosts().find(({ slug }) => slug === params.slug);
@@ -16,7 +66,6 @@ export default function Blog({ params }: { params: { slug: string } }) {
 
   const {
     slug,
-    content,
     metadata: { title, publishedAt },
   } = post;
 
