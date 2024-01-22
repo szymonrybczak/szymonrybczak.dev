@@ -9,6 +9,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(`https://szymonrybczak.dev`),
   title: {
     default: "Szymon Rybczak",
     template: "%s | Szymon Rybczak",

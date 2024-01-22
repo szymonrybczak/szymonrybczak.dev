@@ -74,4 +74,5 @@ export default makeSource({
       ],
     ],
   },
+  disableImportAliasWarning: true,
 });
