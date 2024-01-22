@@ -1,47 +1,40 @@
-import { notFound } from "next/navigation";
-import { getBlogPosts } from "../../db/blog";
-import { Suspense, cache } from "react";
-import formatDate from "@/utils/formatDate";
-import { getViewsCount } from "../../db/queries";
 import ViewsCounter from "@/components/ViewsCounter";
+import formatDate from "@/utils/formatDate";
+import { allBlogs } from "contentlayer/generated";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Suspense, cache } from "react";
 import { increment } from "../../db/actions";
-import Link from "next/link";
-import { Metadata } from "next";
-
-type Props = {
-  params: { slug: string };
-};
+import { getViewsCount } from "../../db/queries";
+import { useMDXComponent } from "next-contentlayer/hooks";
 
 export async function generateMetadata({
   params,
-}: Props): Promise<Metadata | undefined> {
-  let post = getBlogPosts().find((post) => post.slug === params.slug);
+}: {
+  params: { slug: string };
+}): Promise<Metadata | undefined> {
+  const post = allBlogs.find((post) => post.slug === params.slug);
   if (!post) {
     return;
   }
 
-  let {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-    image,
-  } = post.metadata;
-  let ogImage = image
+  const { title, date, summary, image, slug } = post;
+  const ogImage = image
     ? `https://szymonrybczak.dev/${image}`
     : `https://szymonrybczak.dev/og?title=${title}&date=${formatDate(
-        publishedTime,
+        date,
         false,
       )}`;
 
   return {
     title,
-    description,
+    description: summary,
     openGraph: {
       title,
-      description,
+      description: summary,
       type: "article",
-      publishedTime,
-      url: `https://szymonrybcza.dev/blog/${post.slug}`,
+      publishedTime: date,
+      url: `https://szymonrybczak.dev/blog/${slug}`,
       images: [
         {
           url: ogImage,
@@ -51,52 +44,46 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title,
-      description,
+      description: summary,
       images: [ogImage],
     },
   };
 }
 
 export default function Blog({ params }: { params: { slug: string } }) {
-  let post = getBlogPosts().find(({ slug }) => slug === params.slug);
+  const post = allBlogs.find((post) => post.slug === params.slug);
 
   if (!post) {
     notFound();
   }
 
-  const {
-    slug,
-    metadata: { title, publishedAt },
-  } = post;
+  const Component = useMDXComponent(post.body.code);
 
   return (
-    <div>
-      <h1 className="title max-w-[650px] text-2xl font-medium tracking-tighter">
-        {title}
+    <section>
+      <h1 className="max-w-[650px] text-2xl font-semibold tracking-tighter">
+        {post.title}
       </h1>
       <div className="mb-8 mt-2 flex max-w-[650px] items-center justify-between text-sm">
-        <p className="display flex text-sm text-neutral-600 dark:text-neutral-400">
-          <span className="hidden sm:block">
-            <Link href={"https://twitter.com/SzymonRybczak"} target="_blank">
-              @szymonrybczak
-            </Link>
-            {" | "}
-          </span>
-          <span className="pl-1">{formatDate(publishedAt)}</span>
+        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+          {formatDate(post.date)}
         </p>
         <Suspense fallback={<p className="h-5" />}>
-          <Views slug={slug} />
+          <Views slug={post.slug} />
         </Suspense>
       </div>
-    </div>
+      <article className="prose-quoteless prose prose-neutral dark:prose-invert">
+        <Component />
+      </article>
+    </section>
   );
 }
 
 const incrementView = cache(increment);
 
-const Views = async ({ slug }: { slug: string }) => {
+async function Views({ slug }: { slug: string }) {
   let views = await getViewsCount(slug);
   incrementView(slug);
 
   return <ViewsCounter views={views} />;
-};
+}

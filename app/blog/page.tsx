@@ -1,42 +1,40 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { getBlogPosts } from "../db/blog";
+import { allBlogs } from "contentlayer/generated";
+import ViewsCounter from "@/components/ViewsCounter";
 import { Suspense } from "react";
 import { getViewsCount } from "../db/queries";
-import ViewsCounter from "@/components/ViewsCounter";
-import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Posts about React & React Native ecosystem.",
+  description: "Read my thoughts on software development, design, and more.",
 };
 
-export default function Blog() {
-  let allBlogs = getBlogPosts();
-
+export default function BlogPage() {
   return (
     <section>
-      <h1 className="mb-8 text-2xl font-medium tracking-tighter">
+      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
         read my blog
       </h1>
       {allBlogs
         .sort((a, b) => {
-          return new Date(a.metadata.publishedAt) >
-            new Date(b.metadata.publishedAt)
-            ? -1
-            : 1;
+          if (new Date(a.date) > new Date(b.date)) {
+            return -1;
+          }
+          return 1;
         })
-        .map(({ slug, metadata: { title } }) => (
+        .map((post) => (
           <Link
-            key={slug}
+            key={post.slug}
             className="mb-4 flex flex-col space-y-1"
-            href={`/blog/${slug}`}
+            href={`/blog/${post.slug}`}
           >
             <div className="flex w-full flex-col">
               <p className="tracking-tight text-neutral-900 dark:text-neutral-100">
-                {title}
+                {post.title}
               </p>
               <Suspense fallback={<p className="h-6" />}>
-                <Views slug={slug} />
+                <Views slug={post.slug} />
               </Suspense>
             </div>
           </Link>
@@ -45,8 +43,8 @@ export default function Blog() {
   );
 }
 
-const Views = async ({ slug }: { slug: string }) => {
+async function Views({ slug }: { slug: string }) {
   let views = await getViewsCount(slug);
 
   return <ViewsCounter views={views} />;
-};
+}
