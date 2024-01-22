@@ -20,7 +20,7 @@ export async function GET(req: NextRequest) {
           width: "100%",
           display: "flex",
           flexDirection: "column",
-          backgroundImage: "url(https://szymonrybczak.dev/og-bg.png)",
+          backgroundImage: "url(https://szymonrybczak.dev/og-bg.jpg)",
         }}
       >
         <div style={{ display: "flex", flex: 1 }}></div>
