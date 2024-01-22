@@ -32,7 +32,7 @@ export default function WorkPage() {
           </h2>
         </Link>
         <p className="not-prose text-sm text-neutral-600 dark:text-neutral-400">
-          React Native Developer
+          React Native Developer, Nov 2022 - Present
         </p>
         <p>
           Callstack is Software Engineering Consultancy that specializes in
@@ -91,7 +91,14 @@ export default function WorkPage() {
           LiveKid is an innovative Polish SaaS startup that offers a platform
           for kindergartens and nurseries, enabling quick and efficient contact
           between parents and the institution. My main goal was to support the
-          development of the main mobile app.
+          development of the{" "}
+          <Link
+            href={"https://apps.apple.com/pl/app/livekid/id1436616910"}
+            target={"_blank"}
+          >
+            main mobile app
+          </Link>
+          .
         </p>
       </div>
     </section>
