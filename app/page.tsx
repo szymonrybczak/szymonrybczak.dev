@@ -26,7 +26,7 @@ export default function Page() {
         </span>
         {`. I'm based in Cracow, PL. Currently maintaining `}
         <Badge href="https://github.com/react-native-community/cli">
-          <span className="text-s px-1">react-native-community/cli</span>
+          <span className="text-s px-1">@react-native-community/cli</span>
         </Badge>
         <span className="pl-1">
           and focusing on bringing web concepts to native world.
