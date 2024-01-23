@@ -30,6 +30,8 @@ export async function GET(req: NextRequest) {
             flex: 1,
             flexDirection: "column",
             marginBottom: 50,
+            marginLeft: 225,
+            marginRight: 150,
           }}
         >
           <div
@@ -38,13 +40,12 @@ export async function GET(req: NextRequest) {
               fontStyle: "normal",
               color: "white",
               lineHeight: "90px",
-              padding: "100px",
-              paddingBottom: "50px",
               display: "block",
               lineClamp: 2,
               boxOrient: "vertical",
               overflow: "hidden",
               textOverflow: "ellipsis",
+              marginTop: 100,
             }}
           >
             {postTitle}
@@ -56,7 +57,6 @@ export async function GET(req: NextRequest) {
               fontStyle: "normal",
               color: "#837877",
               lineHeight: "110px",
-              paddingLeft: 100,
             }}
           >
             szymonrybczak.dev | {postPublishDate}
