@@ -29,7 +29,9 @@ export default function Page() {
           <span className="text-s px-1">@react-native-community/cli</span>
         </Badge>
         <span className="pl-1">
-          and focusing on bringing web concepts to native world.
+          and focusing on bringing new web concepts to native. I{"'"}m Open
+          Source enthusiast, and I love to share my knowledge with the
+          community!
         </span>
       </p>
       <div className="my-8 columns-2 gap-3 sm:columns-3">
