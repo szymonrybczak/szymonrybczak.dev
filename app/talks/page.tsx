@@ -18,6 +18,13 @@ type Entry = {
 
 const data: Entry[] = [
   {
+    id: 4,
+    name: "React Server Components for React Native with Szymon Rybczak",
+    date: "01.23.2024",
+    link: "https://podcast.galaxies.dev/episodes/026-react-server-components-for-react-native-with-szymon-rybczak",
+    place: "Rocket Ship Podcast #26",
+  },
+  {
     id: 3,
     name: "Bringing React Server Components to React Native",
     date: "12.09.2023",
