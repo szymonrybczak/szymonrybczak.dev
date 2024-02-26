@@ -39,11 +39,11 @@ But this primitive comes with quite a few drawbacks:
 
 ### What is <code>react-strict-dom</code> approach?
 
-<code>react-strict-dom</code> takes the opposite approach to React Native for Web and
-it utilises Web APIs to render components. For this, it adds **two _small_ polyfills**
+<code>react-strict-dom</code> takes the opposite approach to React Native for Web
+and it utilises Web APIs to render components. For this, it adds **two _small_ polyfills**
 which are responsible for translating its APIs to <code>react-native</code>
-and <code>react-dom</code> primitives. Here's a nice graph which shows how it
-work in detail:
+and <code>react-dom</code> primitives. Here's a nice graph which shows how it work
+in detail:
 
 ![react-strict-dom diagram](/images/rsd.png)
 
@@ -53,8 +53,8 @@ For now, not all APIs are polyfilled or built-in inside Native platforms but the
 
 <code>react-strict-dom</code> is powered by [stylex](https://stylexjs.com/) which
 is a new styling solution created by Meta that is already powering facebook.com in
-production. It comes with the package under <code>css</code> module.
-All the building blocks with which we can build our app are available under
+production. It comes with the package under <code>css</code> module. All the building
+blocks with which we can build our app are available under
 <code>html</code>. This is how building UI with RSD looks like:
 
 ```javascript
@@ -64,7 +64,7 @@ import { css, html } from "react-strict-dom";
 // Part of apps/examples/src/App.js
 export default function App() {
   return (
-    <html.div style={egStyles.div}>
+    <html.div style={styles.div}>
       <html.div data-testid="testid">div</html.div>
       <html.span>span</html.span>
       <html.p>paragraph</html.p>
@@ -96,8 +96,8 @@ const styles = css.create({
 });
 ```
 
-<code>react-strict-dom</code> is leveraging APIs that we know from the Web to build universal
-apps.
+<code>react-strict-dom</code> is leveraging APIs that we know from the Web to build
+universal apps.
 
 ### Is <code>\<html.div\></code> a native component?
 
