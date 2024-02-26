@@ -1,0 +1,124 @@
+---
+title: '"react-strict-dom", why it''s so great?'
+date: "2024-02-26"
+summary: "react-strict-dom, why it's so great?"
+---
+
+### Introduction
+
+Last week Meta open sourced new library called <code>[react-strict-dom](https://github.com/facebook/react-strict-dom)</code>, its goal is to improve and standarize the way of writing React components for Web and Native. In this article I'd like to go through historical background on building universals codebase that shares components between Web and Native, and how <code>react-strict-dom</code> changes the way we can do it.
+
+### Historical background
+
+As you may know React Native has different primitives for rendering UI than Web, when you're a Web developer and you see basic RN component:
+
+```javascript
+import { View, Text } from "react-native";
+
+const App = () => {
+  return (
+    <View>
+      <Text>Hello, world!</Text>
+    </View>
+  );
+};
+```
+
+it can seem a bit odd and hard to use at first. Also it removes ability to use UI libraries that are using Web primitives in React Native. Also migrating components from Web takes a lot of time and is painful.
+
+#### react-native-web
+
+Few years ago React Native for Web was created by [Nicolas Gallagher](https://nicolasgallagher.com/) during the development of Twitter's Progressive Web App. RNW adds a compatability shim which transles React Native's primitives into <code>react-dom</code> ones, allowing us to render React Native components on Web:
+
+![react-native-web diagram](/images/rnw.png)
+
+But this primitive comes with quite few drawbacks:
+
+1. The shim implements a large surface area of fragmented APIs, and it needs to match React Native's non-standard implementations (e.g. events).
+2. The shim itself is quite big, which is not the best for modern web apps.
+
+### What is <code>react-strict-dom</code> approach?
+
+<code>react-strict-dom</code> takes oposite approach to React Native for Web and
+it is utilising Web APIs to render components. For this it adds two _small_ polyfills
+which are reponsible for translating its APIs to <code>react-native</code>
+and <code>react-dom</code> primitives. Here's a nice graph which shows how does it
+work in detail:
+
+![react-strict-dom diagram](/images/rsd.png)
+
+For now not all APIs are polyfilled or built-in inside Native platforms but there's an ongoing effort to make so (here's a curent [compatability list](https://github.com/facebook/react-strict-dom/blob/main/packages/react-strict-dom/COMPATIBILITY.md) with progress on supporting primitvies).
+
+### Creating components with <code>react-strict-dom</code>
+
+<code>react-strict-dom</code> is powered by [stylex](https://stylexjs.com/) which
+is new styling solution created by Meta that is already powering facebook.com in
+production environment. It comes with the package under <code>css</code> module.
+All our building block with which we can build app are available under
+<code>html</code>. This is how building UI with RSD looks like:
+
+```javascript
+import React from "react";
+import { css, html } from "react-strict-dom";
+
+// Part of apps/examples/src/App.js
+export default function App() {
+  return (
+    <html.div style={egStyles.div}>
+      <html.div data-testid="testid">div</html.div>
+      <html.span>span</html.span>
+      <html.p>paragraph</html.p>
+
+      <html.div />
+
+      <html.span>
+        <html.a href="https://google.com">anchor</html.a>,
+        <html.code>code</html.code>,<html.em>em</html.em>,
+        <html.strong>strong</html.strong>,
+        <html.span>
+          H<html.sub>2</html.sub>0
+        </html.span>
+        ,<html.span>
+          E=mc<html.sup>2</html.sup>
+        </html.span>
+      </html.span>
+    </html.div>
+  );
+}
+
+// This is calling `stylex` under the hood
+const styles = css.create({
+  div: {
+    paddingBottom: 50,
+    paddingTop: 50,
+    backgroundColor: "white",
+  },
+});
+```
+
+<code>react-strict-dom</code> is levering APIs that we know from Web to build universals
+apps.
+
+### Is <code>\<html.div\></code> a native component?
+
+Yes, it is! Role of <code>react-strict-dom</code> is to translate one universal API to platforms' primitives.
+
+Also as we can read in [React Native Principles](https://reactnative.dev/blog/2020/07/17/react-native-principles) blog post:
+
+> Our top priority for React Native is to _match the expectations people have for each platform._ This is why React Native renders to platform primitives. We value native look-and-feel over cross-platform consistency.
+
+React Native goal is to create fully native apps, so with new approach at the end of the day we still have fully native app, not a WebView, or anything also. We can easily check it by running [example app](https://github.com/facebook/react-strict-dom/tree/main/apps/examples) inside repository and by inspecting components with Xcode's View Hierarchy tool:
+
+![Xcode inspector](/images/xcode-inspector.png)
+
+💡 For technical deep dive I really encourage you to read RFC by Nicolas: [RFC: React DOM for Native (reduce API fragmentation)](https://github.com/react-native-community/discussions-and-proposals/pull/496)
+
+### Future
+
+There's a lot of work to do, you can follow current status in [COMPATABILITY.md](https://github.com/facebook/react-strict-dom/blob/main/packages/react-strict-dom/COMPATIBILITY.md) document inside repository, but it looks like having one primitive that most developers know from Web is the best choice to build universal apps.
+
+Also what is worth noticiting is that <code>react-strict-dom</code> is powering teams at Meta in shiping features faster, to more platforms with fewer engineers 🚀 and it's the first cross-platform React solution which both targets Web and Native with same components that Meta is directly investing into!
+
+### Summary
+
+It's really great move in React ecosystem, it looks like <code>react-strict-dom</code> is a successor of React Native Web and it will allow us build universals apps with one codebases delivered to multiple targets using platform's APIs without any compromises or performance issues. Thanks for reading! 🙌
