@@ -82,8 +82,12 @@ export default function Blog({ params }: { params: { slug: string } }) {
 const incrementView = cache(increment);
 
 async function Views({ slug }: { slug: string }) {
-  let views = await getViewsCount(slug);
-  incrementView(slug);
+  let views = "0";
+
+  try {
+    views = await getViewsCount(slug);
+    incrementView(slug);
+  } catch {}
 
   return <ViewsCounter views={views} />;
 }

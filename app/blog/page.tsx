@@ -44,7 +44,10 @@ export default function BlogPage() {
 }
 
 async function Views({ slug }: { slug: string }) {
-  let views = await getViewsCount(slug);
+  let views = "0";
+  try {
+    views = await getViewsCount(slug);
+  } catch {}
 
   return <ViewsCounter views={views} />;
 }
