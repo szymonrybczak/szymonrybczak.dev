@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import { CSPostHogProvider } from "./providers";
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://szymonrybczak.dev`),
@@ -40,6 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
+        <CSPostHogProvider>
         <ThemeProvider attribute="class" defaultTheme="system">
           <main
             className={cn(
@@ -54,6 +56,7 @@ export default function RootLayout({
             <Analytics />
           </main>
         </ThemeProvider>
+        </CSPostHogProvider>
       </body>
     </html>
   );
