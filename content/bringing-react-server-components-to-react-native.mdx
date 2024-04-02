@@ -1,0 +1,81 @@
+---
+title: "Bringing React Sever Components to React Native"
+date: "2024-04-02"
+summary: "React Server Components are well known concept on the web, but what about React Native?"
+---
+
+For the last few months, I've been researching React Server Components, discussing with React Core Team members, and giving a few conference talks on this topic. In this blog post, I would like to share my thoughts and knowledge that I believe are important.
+
+### Introduction
+
+A few years ago, software engineers at Meta solved the problem of sending unnecessary data over the network by combining [Relay](https://github.com/facebook/relay) and [GraphQL](https://graphql.org/). While this solution worked for them, the React team desired a universal solution integrated solely within React. Consequently, the React team introduced the concept of React Server Components to expand React's capabilities by enabling the rendering of React components on the server and what allows direct access to server-side resources from React components.
+
+### What React Server Components allows?
+
+React Server Components solves a bunch of problems that developers encounter when developing modern apps. Downloading unnecessary data, downloading heavy JavaScript libraries which leads to big initial bundle size and slow time to interact etc. Thanks to RSC we can execute React components on the Server and only rendered result, things that user will see are sent over the network. It's all possible thanks to RSC payload, which React is able to consume and display to the user. In addition the payload is streamed, so result comes to a user even faster.
+
+Also React never had an official data networking solution, a recommendation was to use 3rd party libraries - the possibility of executing React components on a Server allows developer to build full-fledged fullstack apps with React.
+
+### Relationship with React Native
+
+As you may know, React Server Components were initially introduced on the web. That's what the entire React community is discussing; various frameworks are adopting them, and there are even some production-ready implementations. But very few people talk about RSC in the context of React Native. Actually, one of the reasons that React Server Components were initially funded at Meta was the promise they presented in using server-driven UI in mobile apps.
+
+![Tweet from Sebastian Markbåge regarding React Server Components history on native](/images/rsc-in-rn.png)
+
+<center>https://x.com/sebmarkbage/status/1623175042971344896</center>
+
+### Server-driven UI in mobile apps
+
+Big tech companies are already shipping mobile apps with server-driven UI. In most cases, they build their own systems, paradigms, and frameworks. As you may know, creating such a solution requires a significant amount of time and effort to maintain it. This workload may be too much for some companies to handle, and typically only major players like [Airbnb](https://medium.com/airbnb-engineering/a-deep-dive-into-airbnbs-server-driven-ui-system-842244c5f5), [Uber](https://artem-tyurin.medium.com/screenflow-an-unfinished-attempt-at-a-cross-platform-server-driven-ui-at-uber-749c1bc1d89) and Meta can afford it. React Server Components in React Native offer a _unified_ solution for developing such UIs using React, following specific directives and principles.
+
+### Architecture differences between web and mobile apps apps
+
+Web and mobile are two different environments, which lead to various problems. The most important difference is that on the web, we need to download everything each time a user types a URL. The browser then downloads all the necessary code to display and make an app interactive. In the world of mobile apps, users download an app once, and then they can access it anytime, regardless of whether they have an internet connection. The app is permanently stored on the device. However, mobile apps still make numerous network calls and display a significant amount of dynamic content, so there's a room potentially for React Server Components to shine.
+
+### How React Server Components will affect user experience?
+
+React Server Components won't change any of native mobile apps' user experience. It will stay the same, but the way we build apps will be different, and a lot of things will be simplified. This requires also some aligmenets from the framework adopting React Server Components for React Native, so that the user experience remains consistent. This includes implementing a proper caching mechanism and ensuring that relevant components, such as navigators, loading indicators, and error boundaries, are always included in the client bundle. Consequently, even if an internet connection is lost, the user will still be able to interact with the app.
+
+Also, what is worth mentioning is that React Native renders purely native primitives. With React Server Components, this won't change! Components that are rendered on a Server will be displayed as truly native. How is that possible? On a Server, React doesn't use the real implementation of Client Components but just passes a reference to them and gives them an <code>id</code>. So, all React Native primitives are Client Components like <code>View</code>, <code>Text</code> with a reference <code>id</code>, which will then be resolved on the Client and mapped to fully native primitives such as <code>UIView</code>, <code>UILabel</code>.
+
+### What does  think about it?
+
+This is a very popular concern that people voice whenever I talk about bringing React Server Components to native apps. With React Server Components, **no native code** is sent over the network. As I've mentioned earlier, React sends references to Client Components that are then rendered on the Client side to native primitives.
+
+Right now mobile apps make a lot of network calls, and are depended on remote's dynamic content, so UI is server-generated in a way, React Server Components shifts this boundary, and unless we don't drastically change apps' content, developers are safe.
+
+### Instant iteration with React Server Components
+
+Deploying web apps is a lot easier than deploying mobile apps. The standard flow of publishing a mobile app looks like this:
+
+1. Make a change,
+2. Build a release app,
+3. Submit the app to App Store.
+
+We can automate the first two steps, but the third one is a nightmare for all mobile app developers. It can sometimes take a few weeks to publish and roll out your app to users. Just imagine that you have a bug in e.g. the payments flow, which is a business-critical issue for a company.
+
+Thanks to React Native's app architecture, we can use Over-The-Air updates. Every released app consists of two parts: native code and a JavaScript bundle. With this architecture, we can remotely replace the JavaScript part, allowing new code to be sent to a user without App Store review. This speeds up the process and ensures that updates are delivered to users.
+
+Not every solution is perfect, and this one also contains some drawbacks. One of them is that in the majority of cases we need to replace entire JavaScript bundle, which can be quite large in size. This can be particularly challenging with a slow internet connection, as it can take a while to download. Although we can split the bundle into smaller ones and handle the update as a background task, but this requires additional effort and maintenance. Smaller development teams, unfortunately, don't have resources to manage this.
+
+With React Server Components in React Native we can achieve next-level iteration. We're only shipping updates for those components that were affected by a change, so rather than changing whole bundle, we can iterate on a component level. This speeds up the entire process for both the developer and the end user.
+
+### What are benefits of brining React Server Components to React Native?
+
+These are the main benefits of bringing React Server Components to React Native, in my opinion. As we're in the early stage of this concept, there's a lot of things to discover and a lot of different use cases to explore.
+
+1. **Instant iteration** - by rendering server-driven UI to apps. Server-driven UI is a very popular concept in big tech companies, React Server Components allow us to use it in _every_ app (with unified model, and without unnecessary custom architecture) and with all optimisations that comes with RSC, such as streaming, sending only necessary parts etc.
+2. **Feature flags, A/B testing** - including new experimental features inside app bundles isn't the best thing to do, especially when your app contains various modules that targets only specific users By moving rendering to the Server it's a lot easier to implement such mechanisms.
+3. **First class data fetching story** - built-in inside React, as I've mentioned before mobile apps make a ton of data requests, RSC unifies and simplifies work with remote data and provides best practices to optimise results. Also <code>Suspense</code> mechanism along with other React Concurrency features simplifies the creation of diverse user interfaces, increasing the efficiency and value of our UI development efforts.
+
+### What's blocking us?
+
+There's a ton of work to do to bring the React Server Components paradigm to React Native, but fortunately, we're moving in the right direction. Here's a list of things that are missing to have proper RSC support:
+
+- New Architecture: All React 18 concurrent features are added to new Fabric renderer <code>Suspense</code>, <code>startTransition()</code> which is available with New Architecture, fortunately we're closer than further, starting from React Native 0.75 - New Architecture [will be enabled](https://github.com/facebook/react-native/pull/43135) for every new project initialised.
+- Not all APIs are supported in Hermes (which is a JavaScript engine that powers React Native), and there's need to rely on bunch of polyfills, but fortunately there is some effort to add native support for [some APIs.](https://x.com/tmikov/status/1758967746858295612?s=20) which are crucial for React Server Components such as <code>TextDecoder</code> etc.
+- Last but not least, a _massive_ amount of work inside bundler and navigation solutions to provide proper support and patterns which will allow seamless integration with the best practices of React Server Components inside React Native apps.
+
+### Summary
+
+React Server Components make a lot of sense in React Native, but in a slightly different form and with a few important framework's implementation details. There's a ton of things to do to bring this concept to production apps, but I'm really glad that there are more people discussing this concept, more questions and more different use cases nowadays. I hope that later this year, there will be an implementation that enables us to use React Server Components on various platforms! 🙌
