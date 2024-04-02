@@ -1,5 +1,5 @@
 ---
-title: "Bringing React Sever Components to React Native"
+title: "Bringing React Server Components to React Native"
 date: "2024-04-02"
 summary: "React Server Components are well known concept on the web, but what about React Native?"
 ---
@@ -10,7 +10,7 @@ For the last few months, I've been researching React Server Components, discussi
 
 A few years ago, software engineers at Meta solved the problem of sending unnecessary data over the network by combining [Relay](https://github.com/facebook/relay) and [GraphQL](https://graphql.org/). While this solution worked for them, the React team desired a universal solution integrated solely within React. Consequently, the React team introduced the concept of React Server Components to expand React's capabilities by enabling the rendering of React components on the server and what allows direct access to server-side resources from React components.
 
-### What React Server Components allows?
+### What's possible with React Server Components?
 
 React Server Components solves a bunch of problems that developers encounter when developing modern apps. Downloading unnecessary data, downloading heavy JavaScript libraries which leads to big initial bundle size and slow time to interact etc. Thanks to RSC we can execute React components on the Server and only rendered result, things that user will see are sent over the network. It's all possible thanks to RSC payload, which React is able to consume and display to the user. In addition the payload is streamed, so result comes to a user even faster.
 
@@ -76,4 +76,4 @@ There's a ton of work to do to bring the React Server Components paradigm to Rea
 
 ### Summary
 
-React Server Components make a lot of sense in React Native, but in a slightly different form and with a few important framework's implementation details. There's a ton of things to do to bring this concept to production apps, but I'm really glad that there are more people discussing this concept, more questions and more different use cases nowadays. I hope that later this year, there will be an implementation that enables us to use React Server Components on various platforms! 🙌
+React Server Components make a lot of sense in React Native, but in a slightly different form and with a few important framework's implementation details. There's a ton of things to do to bring this concept to production apps, but I'm really glad that there are more people discussing this concept, more questions and more different use cases nowadays. I hope that later this year, there will be an implementation that enables us to use React Server Components on various platforms! I'm working on a bigger technical deep-dive into the topic. Feel free to check the progress I share on Twitter/X and stay tuned for another blog post 🙌
