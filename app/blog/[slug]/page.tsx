@@ -7,6 +7,7 @@ import { Suspense, cache } from "react";
 import { increment } from "../../db/actions";
 import { getViewsCount } from "../../db/queries";
 import { useMDXComponent } from "next-contentlayer/hooks";
+import Tweet from "@/components/tweet";
 
 export async function generateMetadata({
   params,
@@ -73,7 +74,11 @@ export default function Blog({ params }: { params: { slug: string } }) {
         </Suspense>
       </div>
       <article className="prose-quoteless prose prose-neutral dark:prose-invert">
-        <Component />
+        <Component
+          components={{
+            Tweet,
+          }}
+        />
       </article>
     </section>
   );
