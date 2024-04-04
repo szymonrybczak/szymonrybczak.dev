@@ -116,3 +116,8 @@ h6 {
 .prose *:hover > .anchor {
   @apply visible;
 }
+
+.prose .tweet a {
+  text-decoration: inherit;
+  font-weight: 400;
+}
