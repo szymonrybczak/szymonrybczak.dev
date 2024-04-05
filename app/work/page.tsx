@@ -52,7 +52,7 @@ export default function WorkPage() {
         </p>
         <hr className="my-6 border-neutral-100 dark:border-neutral-800" />
         <Link
-          href={"https://mymusic.pl"}
+          href={"https://mymusic.pl/index.html"}
           target={"_blank"}
           className="not-prose no-underline"
         >
