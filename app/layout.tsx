@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Szymon Rybczak",
-    description: "17 yo React Native Developer",
+    description: "18 yo React Native Developer",
     url: "https://www.szymonrybczak.dev",
     siteName: "Szymon Rybczak",
     locale: "en_US",
@@ -26,10 +26,10 @@ export const metadata: Metadata = {
   twitter: {
     title: "Szymon Rybczak",
     card: "summary_large_image",
-    description: "17 yo React Native Developer",
+    description: "18 yo React Native Developer",
     images: ["https://www.szymonrybczak.dev/opengraph-image.jpg"],
   },
-  description: "17 yo React Native Developer",
+  description: "18 yo React Native Developer",
 };
 
 export default function RootLayout({

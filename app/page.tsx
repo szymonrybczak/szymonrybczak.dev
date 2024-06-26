@@ -12,7 +12,7 @@ export default function Page() {
     <section>
       <h1 className="mb-8 text-xl font-medium">hey, I{"'"}m Szymon 👋</h1>
       <p className="prose prose-neutral dark:prose-invert">
-        {`I'm a 17 yo React Native Developer at `}
+        {`I'm a 18 yo React Native Developer at `}
         <span className="not-prose pl-1 pt-1">
           <Badge href="https://callstack.com/">
             <Image
