@@ -18,11 +18,18 @@ type Entry = {
 
 const data: Entry[] = [
   {
-    id: 5,
+    id: 6,
     name: "Bringing AI to React Native",
     date: "07.25.2024",
     link: "https://www.youtube.com/watch?v=DE36by5JyPI",
     place: "thegeekconf @ 2024",
+  },
+  {
+    id: 5,
+    name: "React Server Components",
+    date: "02.29.2024",
+    link: "https://www.youtube.com/watch?v=KFgo_9PVpxE",
+    place: "React Native Community Kraków",
   },
   {
     id: 4,
