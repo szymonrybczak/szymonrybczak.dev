@@ -1,26 +1,19 @@
 import { unstable_noStore as noStore } from "next/cache";
-import { sql } from "@vercel/postgres";
-import { z } from "zod";
+import { supabase } from "./supabase";
 
 export async function getViewsCount(slug: string) {
   noStore();
-  let data = await sql`
-    SELECT count
-    FROM views
-    WHERE slug = ${slug}
-  `;
 
-  const schema = z.object({
-    count: z.number(),
-  });
+  const { data, error } = await supabase
+    .from("views")
+    .select("count")
+    .eq("slug", slug)
+    .single();
 
-  const parse = schema.safeParse(data.rows[0]);
-
-  if (!parse.success) {
-    return "";
+  if (error) {
+    console.error("Error fetching views:", error);
+    return "0";
   }
 
-  const { count } = parse.data;
-
-  return count.toLocaleString();
+  return data?.count?.toString() || "0";
 }

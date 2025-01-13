@@ -1,12 +1,14 @@
-import { sql } from "@vercel/postgres";
 import { unstable_noStore as noStore } from "next/cache";
+import { supabase } from "./supabase";
 
 export async function increment(slug: string) {
   noStore();
-  await sql`
-    INSERT INTO views (slug, count)
-    VALUES (${slug}, 1)
-    ON CONFLICT (slug)
-    DO UPDATE SET count = views.count + 1
-  `;
+
+  const { error } = await supabase.rpc("increment_views", {
+    slug_text: slug,
+  });
+
+  if (error) {
+    console.error("Error incrementing views:", error);
+  }
 }
