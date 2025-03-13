@@ -11,35 +11,21 @@ export default function formatDate(date: string, showDiff: boolean = true) {
   }
 
   let currentDate = new Date();
-
-  let yearDiff = currentDate.getFullYear() - targetDate.getFullYear();
-  let monthDiff = currentDate.getMonth() - targetDate.getMonth();
-  let dayDiff = currentDate.getDate() - targetDate.getDate();
-
-  // Adjust for month and year differences
-  if (dayDiff < 0) {
-    monthDiff -= 1;
-    dayDiff += new Date(
-      currentDate.getFullYear(),
-      currentDate.getMonth(),
-      0,
-    ).getDate();
-  }
-  if (monthDiff < 0) {
-    yearDiff -= 1;
-    monthDiff += 12;
-  }
+  let diffInMilliseconds = currentDate.getTime() - targetDate.getTime();
+  let diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
 
   // Formatting the difference
   let formattedDifference;
-  if (yearDiff > 0 && !(yearDiff === 1 && monthDiff < 12)) {
+  if (diffInDays >= 365) {
+    const years = Math.floor(diffInDays / 365);
+    formattedDifference = years + (years === 1 ? " year" : " years") + " ago";
+  } else if (diffInDays >= 30) {
+    const months = Math.floor(diffInDays / 30);
     formattedDifference =
-      yearDiff + (yearDiff === 1 ? " year" : " years") + " ago";
-  } else if (monthDiff > 0) {
+      months + (months === 1 ? " month" : " months") + " ago";
+  } else if (diffInDays > 0) {
     formattedDifference =
-      monthDiff + (monthDiff === 1 ? " month" : " months") + " ago";
-  } else if (dayDiff > 0) {
-    formattedDifference = dayDiff + (dayDiff === 1 ? " day" : " days") + " ago";
+      diffInDays + (diffInDays === 1 ? " day" : " days") + " ago";
   } else {
     formattedDifference = "today";
   }
