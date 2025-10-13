@@ -12,7 +12,7 @@ export default function Page() {
     <section>
       <h1 className="mb-8 text-xl font-medium">hey, I{"'"}m Szymon 👋</h1>
       <p className="prose prose-neutral dark:prose-invert">
-        {`I'm a 18 yo React Native Developer at `}
+        {`I'm a 19 yo React Native Developer at `}
         <span className="not-prose pl-1 pt-1">
           <Badge href="https://callstack.com/">
             <Image
@@ -24,9 +24,13 @@ export default function Page() {
             />
           </Badge>
         </span>
-        {`. I'm based in Cracow, PL. Currently maintaining `}
-        <Badge href="https://github.com/react-native-community/cli">
-          <span className="text-s px-1">@react-native-community/cli</span>
+        {`. I'm based in Cracow, PL 🇵🇱 Currently working on few projects, such as `}
+        <Badge href="https://github.com/callstackincubator/ai">
+          <span className="text-s px-1">react-native-ai</span>
+        </Badge>
+        <span className="">, </span>
+        <Badge href="https://github.com/callstackincubator/rock">
+          <span className="text-s px-1">Rock 🪨</span>
         </Badge>
         <span className="pl-1">
           and focusing on bringing new web concepts to native. I{"'"}m Open
@@ -98,7 +102,7 @@ export default function Page() {
       </div>
       <p className="prose prose-neutral dark:prose-invert">
         On a daily basis I{"'"}m working in a Technology team, where I support
-        R&D and Open Source initiatives. I{"'"}m writing a lot of technical
+        R&D and Open Source initiatives. I try to create a lot of technical
         content mainly about React Native and new things that are coming to the
         framework! I am also attending ZSEL 1 High School in Cracow.
       </p>
