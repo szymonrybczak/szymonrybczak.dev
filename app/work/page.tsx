@@ -32,7 +32,7 @@ export default function WorkPage() {
           </h2>
         </Link>
         <p className="not-prose text-sm text-neutral-600 dark:text-neutral-400">
-          React Native Developer, Nov 2022 - Present
+          React Native Developer, Nov 2022 - 28 Nov, 2025
         </p>
         <p>
           Callstack is Software Engineering Consultancy that specializes in
