@@ -20,7 +20,7 @@ const data: Entry[] = [
   {
     id: 8,
     name: "React Native AI: Bringing On-Device LLMs With AI SDK to React Native",
-    date: "10.17.2025",
+    date: "11.28.2025",
     link: "https://gitnation.com/contents/react-native-ai-bringing-on-device-llms-with-ai-sdk-to-react-native",
     place: "React Advanced London",
   },
