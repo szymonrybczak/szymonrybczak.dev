@@ -5,12 +5,15 @@ export const runtime = "edge";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
-  const postTitle = searchParams.get("title");
+  const postTitle = searchParams.get("title") || "Szymon Rybczak";
   const postPublishDate = searchParams.get("date");
   const font = fetch(
     new URL("../../public/fonts/Geist-SemiBold.otf", import.meta.url),
   ).then((res) => res.arrayBuffer());
   const fontData = await font;
+
+  // Only show subtitle for blog posts (when date is provided)
+  const showSubtitle = !!postPublishDate;
 
   return new ImageResponse(
     (
@@ -50,17 +53,19 @@ export async function GET(req: NextRequest) {
           >
             {postTitle}
           </div>
-          <div
-            style={{
-              display: "flex",
-              fontSize: 45,
-              fontStyle: "normal",
-              color: "#837877",
-              lineHeight: "110px",
-            }}
-          >
-            szymonrybczak.dev | {postPublishDate}
-          </div>
+          {showSubtitle && (
+            <div
+              style={{
+                display: "flex",
+                fontSize: 45,
+                fontStyle: "normal",
+                color: "#837877",
+                lineHeight: "110px",
+              }}
+            >
+              szymonrybczak.dev | {postPublishDate}
+            </div>
+          )}
         </div>
       </div>
     ),
@@ -74,6 +79,9 @@ export async function GET(req: NextRequest) {
           style: "normal",
         },
       ],
+      headers: {
+        "Cache-Control": "public, max-age=31536000, immutable",
+      },
     },
   );
 }

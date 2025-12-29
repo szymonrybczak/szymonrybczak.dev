@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     siteName: "Szymon Rybczak",
     locale: "en_US",
     type: "website",
-    images: ["https://www.szymonrybczak.dev/opengraph-image.jpg"],
+    images: ["https://szymonrybczak.dev/og"],
   },
   twitter: {
     title: "Szymon Rybczak",
     card: "summary_large_image",
     description: "18 yo React Native Developer",
-    images: ["https://www.szymonrybczak.dev/opengraph-image.jpg"],
+    images: ["https://szymonrybczak.dev/og"],
   },
   description: "18 yo React Native Developer",
 };
