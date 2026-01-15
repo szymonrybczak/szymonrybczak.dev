@@ -18,6 +18,13 @@ type Entry = {
 
 const data: Entry[] = [
   {
+    id: 9,
+    name: "Building v0 iOS and Fixing React Native Along the Way",
+    date: "01.14.2026",
+    link: "https://www.youtube.com/watch?v=rhLBFKlEXPM",
+    place: "React Universe On Air",
+  },
+  {
     id: 8,
     name: "React Native AI: Bringing On-Device LLMs With AI SDK to React Native",
     date: "11.28.2025",
