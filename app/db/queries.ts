@@ -1,10 +1,10 @@
 import { unstable_noStore as noStore } from "next/cache";
-import { supabase } from "./supabase";
+import { getSupabase } from "./supabase";
 
 export async function getViewsCount(slug: string) {
   noStore();
 
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from("views")
     .select("count")
     .eq("slug", slug)

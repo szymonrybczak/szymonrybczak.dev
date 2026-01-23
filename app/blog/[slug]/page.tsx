@@ -1,25 +1,39 @@
 import ViewsCounter from "@/components/ViewsCounter";
 import formatDate from "@/utils/formatDate";
-import { allBlogs } from "contentlayer/generated";
+import { getPostBySlug, getAllPosts } from "@/lib/posts";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense, cache } from "react";
 import { increment } from "../../db/actions";
 import { getViewsCount } from "../../db/queries";
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { compileMDX } from "next-mdx-remote/rsc";
 import Tweet from "@/components/tweet";
+import remarkGfm from "remark-gfm";
+import rehypePrettyCode from "rehype-pretty-code";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+
+const components = {
+  Tweet,
+};
+
+export async function generateStaticParams() {
+  const posts = getAllPosts();
+  return posts.map((post) => ({ slug: post.slug }));
+}
 
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata | undefined> {
-  const post = allBlogs.find((post) => post.slug === params.slug);
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   if (!post) {
     return;
   }
 
-  const { title, date, summary, image, slug } = post;
+  const { title, date, summary, image } = post;
   const ogImage = image
     ? `https://szymonrybczak.dev/${image}`
     : `https://szymonrybczak.dev/og?title=${title}&date=${formatDate(
@@ -36,11 +50,7 @@ export async function generateMetadata({
       type: "article",
       publishedTime: date,
       url: `https://szymonrybczak.dev/blog/${slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
+      images: [{ url: ogImage }],
     },
     twitter: {
       card: "summary_large_image",
@@ -51,14 +61,32 @@ export async function generateMetadata({
   };
 }
 
-export default function Blog({ params }: { params: { slug: string } }) {
-  const post = allBlogs.find((post) => post.slug === params.slug);
+export default async function Blog({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
 
   if (!post) {
     notFound();
   }
 
-  const Component = useMDXComponent(post.body.code);
+  const { content } = await compileMDX({
+    source: post.content,
+    components,
+    options: {
+      mdxOptions: {
+        remarkPlugins: [remarkGfm],
+        rehypePlugins: [
+          rehypeSlug,
+          [rehypePrettyCode, { theme: "one-dark-pro" }],
+          [rehypeAutolinkHeadings, { properties: { className: ["anchor"] } }],
+        ],
+      },
+    },
+  });
 
   return (
     <section>
@@ -74,11 +102,7 @@ export default function Blog({ params }: { params: { slug: string } }) {
         </Suspense>
       </div>
       <article className="prose-quoteless prose prose-neutral dark:prose-invert">
-        <Component
-          components={{
-            Tweet,
-          }}
-        />
+        {content}
       </article>
     </section>
   );
