@@ -35,8 +35,9 @@
     --radius: 0.5rem;
   }
 
-  .dark {
-    --background: #100F0F;
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: #100F0F;
     --foreground: #f8fafc;
 
     --card: #100F0F;
@@ -52,7 +53,7 @@
     --secondary-foreground: #f8fafc;
 
     --muted: #27272A;
-    --muted-foreground: #27272A;
+    --muted-foreground: #A1A1AA;
 
     --accent: #27272A;
     --accent-foreground: #f8fafc;
@@ -60,9 +61,10 @@
     --destructive: #7f1d1d;
     --destructive-foreground: #f8fafc;
 
-    --border: #27272A;
-    --input: #27272A;
-    --ring: #cbd5e1;
+      --border: #27272A;
+      --input: #27272A;
+      --ring: #cbd5e1;
+    }
   }
 }
 
@@ -75,20 +77,13 @@
   }
 }
 
-.a {
-  margin: 0;
-  padding: 0;
-}
-
-
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  @apply font-bold
-    mb-1;
+  @apply font-medium tracking-tight;
 }
 .prose .anchor {
   @apply absolute invisible no-underline;
