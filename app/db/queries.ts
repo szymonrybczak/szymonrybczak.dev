@@ -4,6 +4,10 @@ import { supabase } from "./supabase";
 export async function getViewsCount(slug: string) {
   noStore();
 
+  if (!supabase) {
+    return "0";
+  }
+
   const { data, error } = await supabase
     .from("views")
     .select("count")

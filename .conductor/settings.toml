@@ -1,0 +1,9 @@
+"$schema" = "https://conductor.build/schemas/settings.repo.schema.json"
+
+[scripts]
+# Bun installs to $HOME/.bun/bin, which isn't on the non-interactive shell PATH
+# Conductor uses for scripts, so add it explicitly before invoking bun.
+setup = 'export PATH="$HOME/.bun/bin:$PATH"; bun install'
+run = 'export PATH="$HOME/.bun/bin:$PATH"; bun run dev --port $CONDUCTOR_PORT'
+archive = "echo 'No teardown needed: the Next.js dev server is the only local process and Conductor stops it on archive.'"
+run_mode = "concurrent"

@@ -22,10 +22,9 @@ export async function generateMetadata({
   const { title, date, summary, image, slug } = post;
   const ogImage = image
     ? `https://szymonrybczak.dev/${image}`
-    : `https://szymonrybczak.dev/og?title=${title}&date=${formatDate(
-        date,
-        false,
-      )}`;
+    : `https://szymonrybczak.dev/og?title=${encodeURIComponent(
+        title,
+      )}&date=${encodeURIComponent(formatDate(date, false))}`;
 
   return {
     title,
@@ -62,11 +61,11 @@ export default function Blog({ params }: { params: { slug: string } }) {
 
   return (
     <section>
-      <h1 className="max-w-[650px] text-2xl font-semibold tracking-tighter">
+      <h1 className="max-w-[650px] text-2xl font-medium tracking-tight">
         {post.title}
       </h1>
       <div className="mb-8 mt-2 flex max-w-[650px] items-center justify-between text-sm">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+        <p className="font-mono text-sm text-neutral-500 dark:text-neutral-500">
           {formatDate(post.date)}
         </p>
         <Suspense fallback={<p className="h-5" />}>

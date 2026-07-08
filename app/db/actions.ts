@@ -4,6 +4,10 @@ import { supabase } from "./supabase";
 export async function increment(slug: string) {
   noStore();
 
+  if (!supabase) {
+    return;
+  }
+
   const { error } = await supabase.rpc("increment_views", {
     slug_text: slug,
   });

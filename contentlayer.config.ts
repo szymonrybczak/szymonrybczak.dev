@@ -21,7 +21,7 @@ const computedFields: ComputedFields = {
       summary: doc.summary,
       image: doc.image
         ? `https://szymonrybczak.dev/${doc.image}`
-        : `https://szymonrybczak.dev/og?title=${doc.title}}`, // FIXME: missing date passed
+        : `https://szymonrybczak.dev/og?title=${encodeURIComponent(doc.title)}`,
       url: `https://szymonrybczak.dev/blog/${doc._raw.flattenedPath}`,
     }),
   },
@@ -46,6 +46,10 @@ export const Blog = defineDocumentType(() => ({
     },
     image: {
       type: "string",
+    },
+    hidden: {
+      type: "boolean",
+      default: false,
     },
   },
   computedFields,

@@ -13,10 +13,9 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        read my blog
-      </h1>
+      <h1 className="mb-8 text-2xl font-medium tracking-tight">read my blog</h1>
       {allBlogs
+        .filter((post) => !post.hidden)
         .sort((a, b) => {
           if (new Date(a.date) > new Date(b.date)) {
             return -1;
@@ -26,17 +25,15 @@ export default function BlogPage() {
         .map((post) => (
           <Link
             key={post.slug}
-            className="mb-4 flex flex-col space-y-1"
+            className="group mb-4 flex flex-col"
             href={`/blog/${post.slug}`}
           >
-            <div className="flex w-full flex-col">
-              <p className="tracking-tight text-neutral-900 dark:text-neutral-100">
-                {post.title}
-              </p>
-              <Suspense fallback={<p className="h-6" />}>
-                <Views slug={post.slug} />
-              </Suspense>
-            </div>
+            <p className="tracking-tight text-neutral-900 transition-colors group-hover:text-neutral-500 dark:text-neutral-100 dark:group-hover:text-neutral-400">
+              {post.title}
+            </p>
+            <Suspense fallback={<p className="h-5" />}>
+              <Views slug={post.slug} />
+            </Suspense>
           </Link>
         ))}
     </section>
