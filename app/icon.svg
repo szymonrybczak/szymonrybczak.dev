@@ -1,17 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="SR">
-  <!-- Minimal SR monogram (Szymon Rybczak): light geometric strokes, white on black. -->
+  <!-- SR monogram: Geist SemiBold outlines from public/fonts/Geist-SemiBold.otf (site branding font) -->
   <rect width="32" height="32" fill="#000"/>
-  <g
-    fill="none"
-    stroke="#fff"
-    stroke-width="1.5"
-    stroke-linecap="square"
-    stroke-linejoin="miter"
-  >
-    <!-- S -->
-    <path d="M13.5 7.25 H7.25 V15.5 H13.5 V24.75 H7.25"/>
-    <!-- R -->
-    <path d="M18.5 24.75 V7.25 H24.75 V15.5 H18.5"/>
-    <path d="M21.25 15.5 L25.25 24.75"/>
-  </g>
+  <path d="M8.95 24.74C12.74 24.74 15.23 22.83 15.23 19.77C15.23 17.27 13.73 15.62 9.23 14.66C6.24 13.97 5.46 13.46 5.46 12.09C5.46 10.8 6.54 9.9 8.31 9.9C10.43 9.9 11.63 11.15 11.84 12.96L14.93 12.82C14.55 9.59 12.36 7.26 8.36 7.26C4.61 7.26 2.33 9.29 2.33 12.21C2.33 14.94 3.88 16.12 8.03 17.06C11.44 17.86 12.1 18.64 12.1 19.93C12.1 21.37 10.97 22.1 8.99 22.1C6.69 22.1 5.39 20.9 5.11 18.73L2 18.92C2.26 22.41 4.8 24.74 8.95 24.74Z" fill="#fff"/>
+  <path d="M16.95 24.36H20.02V18.05H24.02C25.76 18.05 26.44 18.64 26.54 19.98L26.89 24.36H30L29.58 19.53C29.43 17.81 28.54 16.87 26.96 16.64C28.61 16.14 29.86 14.66 29.86 12.66C29.86 9.59 27.55 7.64 23.95 7.64H16.95ZM20.02 15.36V10.3H23.62C25.6 10.3 26.7 11.2 26.7 12.84C26.7 14.47 25.6 15.36 23.76 15.36Z" fill="#fff"/>
 </svg>
