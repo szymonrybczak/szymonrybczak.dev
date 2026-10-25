@@ -1,20 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="SR">
-  <!-- Minimal SR monogram (Szymon Rybczak): white geometric letterforms on black. -->
+  <!-- Minimal SR monogram (Szymon Rybczak): light geometric strokes, white on black. -->
   <rect width="32" height="32" fill="#000"/>
-  <!-- S -->
-  <g fill="#fff">
-    <rect x="6" y="6" width="8" height="4"/>
-    <rect x="6" y="6" width="4" height="10"/>
-    <rect x="6" y="14" width="8" height="4"/>
-    <rect x="10" y="14" width="4" height="12"/>
-    <rect x="6" y="22" width="8" height="4"/>
-  </g>
-  <!-- R -->
-  <g fill="#fff">
-    <rect x="18" y="6" width="4" height="20"/>
-    <rect x="18" y="6" width="8" height="4"/>
-    <rect x="22" y="6" width="4" height="12"/>
-    <rect x="18" y="14" width="8" height="4"/>
-    <polygon points="20,18 22,18 26,26 24,26"/>
+  <g
+    fill="none"
+    stroke="#fff"
+    stroke-width="1.5"
+    stroke-linecap="square"
+    stroke-linejoin="miter"
+  >
+    <!-- S -->
+    <path d="M13.5 7.25 H7.25 V15.5 H13.5 V24.75 H7.25"/>
+    <!-- R -->
+    <path d="M18.5 24.75 V7.25 H24.75 V15.5 H18.5"/>
+    <path d="M21.25 15.5 L25.25 24.75"/>
   </g>
 </svg>
